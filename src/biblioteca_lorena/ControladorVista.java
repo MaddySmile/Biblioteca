@@ -140,6 +140,7 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
 
         if (e.getActionCommand() == "<< Volver") {
             v.dispose();
+            neg.cerrar();
 
         }
 

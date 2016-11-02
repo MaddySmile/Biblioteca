@@ -143,6 +143,9 @@ public class negocio {
         }
        
     }
+    public void cerrar(){
+        con.cerrarConexion();
+    }
     
     
     
