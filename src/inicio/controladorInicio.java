@@ -5,6 +5,7 @@
  */
 package inicio;
 
+import Prestamos.vistaPrestamosERROR;
 import biblioteca_lorena.vistaAlumnos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +38,16 @@ public class controladorInicio implements ActionListener{
       if(e.getActionCommand() == "Libros")  {
        new vistaLibros(frm).setVisible(true);
       }
+      if(e.getActionCommand() == "Informes")  {
+       System.out.println("OOOPS!");
+            new vistaInformesERROR(frm, true).setVisible(true);
+      }
+      
+      if(e.getActionCommand() == "Prestamos")  {
+          System.out.println("OOPS!!!");
+          new vistaPrestamosERROR(frm, true).setVisible(true);
+      }
+      
       if(e.getActionCommand() == "Salir")  {
         frm.dispose();
       

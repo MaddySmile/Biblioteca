@@ -77,9 +77,7 @@
                       <Component id="btAlta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btBajas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btClear" min="-2" max="-2" attributes="0"/>
                           <Component id="btRefreslh" min="-2" max="-2" attributes="0"/>
@@ -122,7 +120,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btBajas" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btAlta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btClear" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -187,14 +184,6 @@
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Bajas"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="99" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Inicio"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btAlta">

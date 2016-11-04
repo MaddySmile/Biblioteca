@@ -25,10 +25,16 @@ public class vistaAlumnos extends JDialog {
     public vistaAlumnos(java.awt.Frame parent) {
         super(parent, true);
          initComponents();   
+         eventosElementos();
+      
         
+        
+    }
+
+    public void eventosElementos(){
         ControladorVista ctlVista = new ControladorVista(this);
         
-        jButton1.addActionListener(ctlVista);
+       
         btBajas.addActionListener(ctlVista);
         btModificar.addActionListener(ctlVista);
         tabResultados.addMouseListener(ctlVista);
@@ -37,11 +43,7 @@ public class vistaAlumnos extends JDialog {
         btVolver.addActionListener(ctlVista);
         btBuscar.addActionListener(ctlVista);
         btClear.addActionListener(ctlVista);
-        
-        
     }
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,7 +62,6 @@ public class vistaAlumnos extends JDialog {
         txtApellido2 = new javax.swing.JTextField();
         btModificar = new javax.swing.JButton();
         btBajas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         btAlta = new javax.swing.JButton();
         btRefreslh = new javax.swing.JButton();
         btVolver = new javax.swing.JButton();
@@ -96,9 +97,6 @@ public class vistaAlumnos extends JDialog {
 
         btBajas.setForeground(new java.awt.Color(255, 0, 0));
         btBajas.setText("Bajas");
-
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
-        jButton1.setText("Inicio");
 
         btAlta.setForeground(new java.awt.Color(51, 153, 0));
         btAlta.setText("Alta");
@@ -173,9 +171,7 @@ public class vistaAlumnos extends JDialog {
                         .addComponent(btAlta)
                         .addGap(18, 18, 18)
                         .addComponent(btBajas)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton1)
-                        .addGap(145, 145, 145)
+                        .addGap(234, 234, 234)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btClear)
                             .addComponent(btRefreslh))))
@@ -210,7 +206,6 @@ public class vistaAlumnos extends JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btModificar)
                     .addComponent(btBajas)
-                    .addComponent(jButton1)
                     .addComponent(btAlta)
                     .addComponent(btBuscar)
                     .addComponent(btClear))
@@ -237,7 +232,6 @@ public class vistaAlumnos extends JDialog {
     private javax.swing.JButton btModificar;
     private javax.swing.JButton btRefreslh;
     private javax.swing.JButton btVolver;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbApellidos;
@@ -269,13 +263,6 @@ public class vistaAlumnos extends JDialog {
         this.btModificar = btModificar;
     }
 
-    public JButton getjButton1() {
-        return jButton1;
-    }
-
-    public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
-    }
 
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;

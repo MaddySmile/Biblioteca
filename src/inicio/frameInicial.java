@@ -23,6 +23,8 @@ public class frameInicial extends javax.swing.JFrame {
         btAlumnos.addActionListener(ctrInicio);
         btLibros.addActionListener(ctrInicio);
         btSalir.addActionListener(ctrInicio);
+        btInformes.addActionListener(ctrInicio);
+        btPrestamos.addActionListener(ctrInicio);
        
      
     }
@@ -42,6 +44,8 @@ public class frameInicial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btAlumnos = new javax.swing.JButton();
         btLibros = new javax.swing.JButton();
+        btPrestamos = new javax.swing.JButton();
+        btInformes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 204));
@@ -56,34 +60,43 @@ public class frameInicial extends javax.swing.JFrame {
 
         btAlumnos.setFont(new java.awt.Font("Bodoni MT Black", 0, 14)); // NOI18N
         btAlumnos.setText("Alumnos");
-        btAlumnos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAlumnosActionPerformed(evt);
-            }
-        });
 
         btLibros.setFont(new java.awt.Font("Bodoni MT Black", 0, 14)); // NOI18N
         btLibros.setText("Libros");
+
+        btPrestamos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btPrestamos.setText("Prestamos");
+
+        btInformes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btInformes.setText("Informes");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(btAlumnos)
-                .addGap(45, 45, 45)
-                .addComponent(btLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btAlumnos)
+                    .addComponent(btPrestamos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btInformes))
+                .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAlumnos)
                     .addComponent(btLibros))
-                .addGap(99, 99, 99))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btPrestamos)
+                    .addComponent(btInformes))
+                .addGap(57, 57, 57))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,15 +119,11 @@ public class frameInicial extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(btSalir)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlumnosActionPerformed
-
-    }//GEN-LAST:event_btAlumnosActionPerformed
 
   
     
@@ -173,7 +182,9 @@ public class frameInicial extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlumnos;
+    private javax.swing.JButton btInformes;
     private javax.swing.JButton btLibros;
+    private javax.swing.JButton btPrestamos;
     private javax.swing.JButton btSalir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

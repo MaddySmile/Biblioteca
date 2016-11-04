@@ -24,110 +24,59 @@ public class controladorLibros extends MouseAdapter implements ActionListener {
     ResultSet rs;
     vistaLibros v;
     private VistaTabla vtabla = null;
+    odtLibros libro;
 
     public controladorLibros(vistaLibros d) {
         neg = new negocioLibros();
         v = d;
+        libro = new odtLibros();
+        iniciarConexion();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand() == "Inicio") {
-            try {
-                rs = neg.buscarLibros();
-                rs.next();
-
-                odtLibros libro = new odtLibros();
-               
-                libro = neg.getLibros();
-                
-                v.getTxtCodigo().setText(libro.getCodigo());
-                v.getTxtTitulo().setText(libro.getTitulo());
-                v.getTxtAutor().setText(libro.getAutor());
-                v.getTxtEditorial().setText(libro.getEditorial());
-                v.getTxtAsignatura().setText(libro.getAsignatura());
-                v.getTxtEstado().setText(libro.getEstado());
-                
-                vtabla = new VistaTabla(rs);
-                v.getTabLibros().setModel(vtabla);
-
-            } catch (SQLException ex) {
-                Logger.getLogger(vistaLibros.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if (e.getActionCommand() == "Refresh") {
-               try {
-                rs = neg.buscarLibros();
-                rs.next();
-
-                odtLibros libro = new odtLibros();
-               
-                libro = neg.getLibros();
-                
-                v.getTxtCodigo().setText(libro.getCodigo());
-                v.getTxtTitulo().setText(libro.getTitulo());
-                v.getTxtAutor().setText(libro.getAutor());
-                v.getTxtEditorial().setText(libro.getEditorial());
-                v.getTxtAsignatura().setText(libro.getAsignatura());
-                v.getTxtEstado().setText(libro.getEstado());
-                
-                vtabla = new VistaTabla(rs);
-                v.getTabLibros().setModel(vtabla);
-
-            } catch (SQLException ex) {
-                Logger.getLogger(vistaLibros.class.getName()).log(Level.SEVERE, null, ex);
-            }
-   
-   
-   }
         
-        else if (e.getActionCommand() == "Alta") {
-            
-            odtLibros libro = new odtLibros();
-            
+        if (e.getActionCommand() == "Refresh") {
+            iniciarConexion();
+        } else if (e.getActionCommand() == "Alta") {
             libro.setTitulo(v.getTxtTitulo().getText());
             libro.setAutor(v.getTxtAutor().getText());
             libro.setEditorial(v.getTxtEditorial().getText());
             libro.setAsignatura(v.getTxtAsignatura().getText());
             libro.setEstado(v.getTxtEstado().getText());
 
-           neg.altaLibro(libro);
+            neg.altaLibro(libro);
 
-          
-        }
-
-        else if (e.getActionCommand() == "Bajas") {
-            odtLibros libro = new odtLibros();
+        } else if (e.getActionCommand() == "Bajas") {
             libro.setCodigo(v.getTxtCodigo().getText());
-            
+
             neg.bajasLibros(libro);
 
-        } 
-        else if (e.getActionCommand() == "Modificar") {
-            odtLibros libro = new odtLibros();
-            
+        } else if (e.getActionCommand() == "Modificar") {
+
+
             libro.setTitulo(v.getTxtTitulo().getText());
             libro.setAutor(v.getTxtAutor().getText());
             libro.setEditorial(v.getTxtEditorial().getText());
             libro.setAsignatura(v.getTxtAsignatura().getText());
             libro.setEstado(v.getTxtEstado().getText());
             libro.setCodigo(v.getTxtCodigo().getText());
-            
+
             neg.modificar(libro);
         }
-        
-          if (e.getActionCommand() == "Buscar") {
-           
-            try {
-                odtLibros ficha = new odtLibros();
-                ficha.setAsignatura(v.getTxtAsignatura().getText());
-                ficha.setAutor(v.getTxtAutor().getText());
-                ficha.setCodigo(v.getTxtCodigo().getText());
-                ficha.setEditorial(v.getTxtEditorial().getText());
-                ficha.setEstado(v.getTxtEstado().getText());
-                ficha.setTitulo(v.getTxtTitulo().getText());
 
-                rs = neg.buscar(ficha);
+        if (e.getActionCommand() == "Buscar") {
+
+            try {
+
+                libro.setAsignatura(v.getTxtAsignatura().getText());
+                libro.setAutor(v.getTxtAutor().getText());
+                libro.setCodigo(v.getTxtCodigo().getText());
+                libro.setEditorial(v.getTxtEditorial().getText());
+                libro.setEstado(v.getTxtEstado().getText());
+                libro.setTitulo(v.getTxtTitulo().getText());
+
+                rs = neg.buscar(libro);
                 rs.next();
                 vtabla = new VistaTabla(rs);
                 v.getTabLibros().setModel(vtabla);
@@ -135,11 +84,9 @@ public class controladorLibros extends MouseAdapter implements ActionListener {
                 Logger.getLogger(controladorLibros.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-           
-
         }
-        
-        if(e.getActionCommand()=="Limpiar"){
+
+        if (e.getActionCommand() == "Limpiar") {
             v.getTxtAsignatura().setText("");
             v.getTxtAutor().setText("");
             v.getTxtCodigo().setText("");
@@ -147,7 +94,6 @@ public class controladorLibros extends MouseAdapter implements ActionListener {
             v.getTxtEstado().setText("");
             v.getTxtTitulo().setText("");
 
-            
         }
 
         if (e.getActionCommand() == "<< Volver") {
@@ -156,14 +102,34 @@ public class controladorLibros extends MouseAdapter implements ActionListener {
         }
     }
 
-    
-
-   
-  
     @Override
-     public void mouseClicked(java.awt.event.MouseEvent evt) {
-         MostrarDatos(v.getTabLibros().getSelectedRow());
- 
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        MostrarDatos(v.getTabLibros().getSelectedRow());
+
+    }
+
+    public void iniciarConexion() {
+        try {
+            rs = neg.buscarLibros();
+            rs.next();
+
+            odtLibros libro = new odtLibros();
+
+            libro = neg.getLibros();
+
+            v.getTxtCodigo().setText(libro.getCodigo());
+            v.getTxtTitulo().setText(libro.getTitulo());
+            v.getTxtAutor().setText(libro.getAutor());
+            v.getTxtEditorial().setText(libro.getEditorial());
+            v.getTxtAsignatura().setText(libro.getAsignatura());
+            v.getTxtEstado().setText(libro.getEstado());
+
+            vtabla = new VistaTabla(rs);
+            v.getTabLibros().setModel(vtabla);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(vistaLibros.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void MostrarDatos(int fila) {
@@ -174,5 +140,5 @@ public class controladorLibros extends MouseAdapter implements ActionListener {
         v.getTxtAsignatura().setText(String.valueOf(v.getTabLibros().getValueAt(fila, 4)));
         v.getTxtEstado().setText(String.valueOf(v.getTabLibros().getValueAt(fila, 5)));
     }
-        
+
 }

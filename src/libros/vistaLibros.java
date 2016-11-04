@@ -21,12 +21,15 @@ public class vistaLibros extends javax.swing.JDialog {
      * Creates new form NewJDialog
      */
     public vistaLibros(java.awt.Frame parent) {
-        super(parent,true);
+        super(parent, true);
         initComponents();
-        
+        eventosElementos();
+
+    }
+
+    public void eventosElementos() {
         controladorLibros x = new controladorLibros(this);
         btAltaLibros.addActionListener(x);
-        btInicio.addActionListener(x);
         btModificarLibros.addActionListener(x);
         btVolverLibros.addActionListener(x);
         tabLibros.addMouseListener(x);
@@ -34,7 +37,6 @@ public class vistaLibros extends javax.swing.JDialog {
         jButton5.addActionListener(x);
         btClear.addActionListener(x);
         btBuscar.addActionListener(x);
-          
     }
 
     /**
@@ -66,7 +68,6 @@ public class vistaLibros extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         btClear = new javax.swing.JButton();
         btBuscar = new javax.swing.JButton();
-        btInicio = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         btBajas = new javax.swing.JButton();
 
@@ -131,9 +132,6 @@ public class vistaLibros extends javax.swing.JDialog {
         btBuscar.setBackground(new java.awt.Color(255, 204, 153));
         btBuscar.setText("Buscar");
 
-        btInicio.setBackground(new java.awt.Color(102, 204, 255));
-        btInicio.setText("Inicio");
-
         jButton5.setText("Refresh");
 
         btBajas.setForeground(new java.awt.Color(255, 0, 0));
@@ -186,17 +184,12 @@ public class vistaLibros extends javax.swing.JDialog {
                                         .addComponent(jButton5))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btModificarLibros)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btAltaLibros)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btBajas)
-                                        .addGap(201, 201, 201))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btInicio)
-                                        .addGap(28, 28, 28)))
+                                .addComponent(btModificarLibros)
+                                .addGap(18, 18, 18)
+                                .addComponent(btAltaLibros)
+                                .addGap(18, 18, 18)
+                                .addComponent(btBajas)
+                                .addGap(201, 201, 201)
                                 .addComponent(btBuscar)
                                 .addGap(14, 14, 14)
                                 .addComponent(btClear)))
@@ -240,16 +233,16 @@ public class vistaLibros extends javax.swing.JDialog {
                             .addComponent(btBuscar))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btInicio)
-                            .addComponent(btBajas)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btModificarLibros)
-                            .addComponent(btAltaLibros))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btBajas)
+                                .addComponent(btAltaLibros)))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btVolverLibros)
                             .addComponent(jButton5))
-                        .addContainerGap(13, Short.MAX_VALUE))))
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
 
         pack();
@@ -261,14 +254,6 @@ public class vistaLibros extends javax.swing.JDialog {
 
     public void setBtAltaLibros(JButton btAltaLibros) {
         this.btAltaLibros = btAltaLibros;
-    }
-
-    public JButton getBtInicio() {
-        return btInicio;
-    }
-
-    public void setBtInicio(JButton btInicio) {
-        this.btInicio = btInicio;
     }
 
     public JButton getBtModificarLibros() {
@@ -383,13 +368,11 @@ public class vistaLibros extends javax.swing.JDialog {
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAltaLibros;
     private javax.swing.JButton btBajas;
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btClear;
-    private javax.swing.JButton btInicio;
     private javax.swing.JButton btModificarLibros;
     private javax.swing.JButton btVolverLibros;
     private javax.swing.JButton jButton5;

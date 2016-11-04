@@ -36,32 +36,32 @@ public class negocioLibros {
     public ResultSet buscar(odtLibros v) {
         String sql = "select * from libros where ";
         if (!(v.getAsignatura()).equals("")) {
-            System.out.println("asignatura");
+            //System.out.println("asignatura");
             sql = sql + "asignatura like '%" + v.getAsignatura() + "%' and ";
         }
         if (!(v.getAutor()).equals("")) {
-            System.out.println("Autor");
+            //System.out.println("Autor");
             sql = sql + "autor like '%" + v.getAutor() + "%' and ";
         }
         if (!(v.getCodigo()).equals("")) {
-            System.out.println("COD");
+           // System.out.println("COD");
             sql = sql + "codigo like '%" + v.getCodigo() + "%' and ";
         }
         if (!(v.getEditorial()).equals("")) {
-            System.out.println("ed");
+           // System.out.println("ed");
             sql = sql + "editorial like '%" + v.getEditorial() + "%' and ";
         }
         if (!(v.getEstado()).equals("")) {
-            System.out.println("estado");
-            sql = sql + "estado like '%" + v.getEstado() + "%' and '";
+          //  System.out.println("estado");
+            sql = sql + "estado like '%" + v.getEstado() + "%' and ";
         }
         if (!(v.getTitulo()).equals("")) {
-            System.out.println("titulo");
-            sql = sql + "titulo like '%" + v.getTitulo() + "%' and '";
+          //  System.out.println("titulo");
+            sql = sql + "titulo like '%" + v.getTitulo() + "%' and ";
         }
 
         sql = sql.substring(0, sql.length() - 5);
-        System.out.println(sql.substring(0, sql.length() - 4));
+      //  System.out.println(sql.substring(0, sql.length() - 4));
         return con.executeQuery(sql);
 
     }

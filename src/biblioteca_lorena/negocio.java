@@ -20,49 +20,41 @@ public class negocio {
     Conexion con;
 
     public negocio() {
-
         con = Conexion.getSingletonInstance();
 
     }
 
     public ResultSet buscarAlumnos() {
-
+        //Consulta para mostrar todos los alumnnos.
         String sql = "SELECT * FROM ALUMNOS";
-
         return con.executeQuery(sql);
 
     }
     
      public ResultSet buscar(odtAlumno v) {
      
-       
+         //Buscar por campos.
          
          String sql = "select * from alumnos where ";
           if(!(v.getNombre()).equals("")  ){
-              System.out.println("el nombre está");
               sql = sql + "nombre like '%"+v.getNombre() +"%' and ";
           }
           if(!(v.getRegistro()).equals("")){
-              System.out.println("el registro está");
               sql = sql + "registro like '%"+v.getRegistro()+"%' and ";
           }
           if(!(v.getDNI()).equals("")){
-              System.out.println("el DNI está");
               sql = sql + "dni like '%"+v.getDNI()+"%' and ";
           }
           if(!(v.getApellido1()).equals("")){
-              System.out.println("el apellido 1 está");
               sql = sql + "apellido1 like '%"+v.getApellido1()+"%' and ";
           }
           if(!(v.getApellido2()).equals("")){
-              System.out.println("el apellido 2 está");
               sql = sql + "apellido2 like '%"+v.getApellido2()+"%' and '";
           }
         
-              sql = sql.substring(0,sql.length()-5);
-              System.out.println(sql.substring(0, sql.length()-4)); 
+              sql = sql.substring(0,sql.length()-5); //sirve para quitar el "and" 
+             
               return con.executeQuery(sql);
-
     }
 
     public odtAlumno getAlumno() throws SQLException {
@@ -74,8 +66,7 @@ public class negocio {
         alumno.setDNI(rs.getString("DNI"));
         alumno.setRegistro(rs.getString("REGISTRO"));
 
-        return alumno;
-        
+        return alumno;      
     }
 
     public String getNombre() throws SQLException {
@@ -104,23 +95,19 @@ public class negocio {
     }
 
     public void altaAlumno(odtAlumno ficha) {
-        //adsfasdfasdfasdf <3
         String consulta =
    "Insert into alumnos(dni, nombre, apellido1, apellido2) values ('"+ficha.getDNI()+"', '"+ficha.getNombre()+"',"+ " '"+ficha.getApellido1()+"', '"+ficha.getApellido2()+"')";
       
             if(con.consultaUpdate(consulta) > 0){
          JOptionPane.showMessageDialog(null, "Alta Correcta");
      } else {
-         JOptionPane.showMessageDialog(null, "Ha Habido un Error en su ");
-         
-      
+         JOptionPane.showMessageDialog(null, "Ha Habido un error en su correcta.");          
      }
          
     }
     
     public void bajas(odtAlumno ficha){
-          String sql="delete from alumnos where registro=" + ficha.getRegistro();
-     
+          String sql="delete from alumnos where registro=" + ficha.getRegistro(); 
      if(con.consultaUpdate(sql) > 0){
          JOptionPane.showMessageDialog(null, "Baja Correcta");
      } else {

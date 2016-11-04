@@ -24,63 +24,28 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
     ResultSet rs;
     vistaAlumnos v;
     private VistaTabla vtabla = null;
+    odtAlumno ficha;
 
     public ControladorVista(vistaAlumnos d) {
 
         neg = new negocio();
+        ficha = new odtAlumno();
         v = d;
+        iniciarConexion();
 
     }
 
     @Override
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand() == "Inicio") {
-            try {
-                rs = neg.buscarAlumnos();
-                rs.next();
-
-                odtAlumno alumno = new odtAlumno();
-
-                alumno = neg.getAlumno();
-                v.getTxtName().setText(alumno.getNombre());
-                v.getTxtApellido1().setText(alumno.getApellido1());
-                v.getTxtApellido2().setText(alumno.getApellido2());
-                v.getTxtDNI().setText(alumno.getDNI());
-                v.getTxtRegistro().setText(alumno.getRegistro());
-
-                vtabla = new VistaTabla(rs);
-                v.getTabResultados().setModel(vtabla);
-
-            } catch (SQLException ex) {
-                Logger.getLogger(vistaAlumnos.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
+        
         if (e.getActionCommand() == "Refresh") {
-            try {
-                rs = neg.buscarAlumnos();
-                rs.next();
 
-                odtAlumno alumno = new odtAlumno();
-
-                alumno = neg.getAlumno();
-                v.getTxtName().setText(alumno.getNombre());
-                v.getTxtApellido1().setText(alumno.getApellido1());
-                v.getTxtApellido2().setText(alumno.getApellido2());
-                v.getTxtDNI().setText(alumno.getDNI());
-                v.getTxtRegistro().setText(alumno.getRegistro());
-
-                vtabla = new VistaTabla(rs);
-                v.getTabResultados().setModel(vtabla);
-
-            } catch (SQLException ex) {
-                Logger.getLogger(vistaAlumnos.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            iniciarConexion();
         }
 
         if (e.getActionCommand() == "Alta") {
-            odtAlumno ficha = new odtAlumno();
+          
 
             ficha.setDNI(v.getTxtDNI().getText());
             ficha.setNombre(v.getTxtName().getText());
@@ -91,7 +56,7 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
         }
 
         if (e.getActionCommand() == "Bajas") {
-            odtAlumno ficha = new odtAlumno();
+          
 
             ficha.setRegistro(v.getTxtRegistro().getText());
 
@@ -99,24 +64,13 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
 
         }
         if (e.getActionCommand() == "Modificar") {
-            odtAlumno ficha = new odtAlumno();
-            ficha.setDNI(v.getTxtDNI().getText());
-            ficha.setNombre(v.getTxtName().getText());
-            ficha.setApellido1(v.getTxtApellido1().getText());
-            ficha.setApellido2(v.getTxtApellido2().getText());
-            ficha.setRegistro(v.getTxtRegistro().getText());
-
+            setCamposComunes();
             neg.modificar(ficha);
+            
         }
         if (e.getActionCommand() == "Buscar") {
             try {
-                odtAlumno ficha = new odtAlumno();
-                ficha.setDNI(v.getTxtDNI().getText());
-                ficha.setNombre(v.getTxtName().getText());
-                ficha.setApellido1(v.getTxtApellido1().getText());
-                ficha.setApellido2(v.getTxtApellido2().getText());
-                ficha.setRegistro(v.getTxtRegistro().getText());
-
+                setCamposComunes();
                 rs = neg.buscar(ficha);
                 rs.next();
                 vtabla = new VistaTabla(rs);
@@ -127,20 +81,19 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
             }
 
         }
-        
-        if(e.getActionCommand()=="Limpiar"){
-        
+
+        if (e.getActionCommand() == "Limpiar") {
+
             v.getTxtRegistro().setText("");
             v.getTxtDNI().setText("");
             v.getTxtName().setText("");
             v.getTxtApellido1().setText("");
             v.getTxtApellido2().setText("");
-            
+
         }
 
         if (e.getActionCommand() == "<< Volver") {
             v.dispose();
-            neg.cerrar();
 
         }
 
@@ -149,6 +102,35 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
     @Override
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         Mostrar_datos(v.getTabResultados().getSelectedRow());
+    }
+
+    public void setCamposComunes() {
+       
+        ficha.setDNI(v.getTxtDNI().getText());
+        ficha.setNombre(v.getTxtName().getText());
+        ficha.setApellido1(v.getTxtApellido1().getText());
+        ficha.setApellido2(v.getTxtApellido2().getText());
+        ficha.setRegistro(v.getTxtRegistro().getText());
+    }
+
+    public void iniciarConexion() {
+        try {
+            rs = neg.buscarAlumnos();
+            rs.next();
+       
+            ficha = neg.getAlumno();
+            v.getTxtName().setText(ficha.getNombre());
+            v.getTxtApellido1().setText(ficha.getApellido1());
+            v.getTxtApellido2().setText(ficha.getApellido2());
+            v.getTxtDNI().setText(ficha.getDNI());
+            v.getTxtRegistro().setText(ficha.getRegistro());
+
+            vtabla = new VistaTabla(rs);
+            v.getTabResultados().setModel(vtabla);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(vistaAlumnos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void Mostrar_datos(int fila) {
