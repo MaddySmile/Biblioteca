@@ -39,7 +39,6 @@ public class vistaAlumnos extends JDialog {
         btModificar.addActionListener(ctlVista);
         tabResultados.addMouseListener(ctlVista);
         btAlta.addActionListener(ctlVista);
-        btRefreslh.addActionListener(ctlVista);
         btVolver.addActionListener(ctlVista);
         btBuscar.addActionListener(ctlVista);
         btClear.addActionListener(ctlVista);
@@ -63,7 +62,6 @@ public class vistaAlumnos extends JDialog {
         btModificar = new javax.swing.JButton();
         btBajas = new javax.swing.JButton();
         btAlta = new javax.swing.JButton();
-        btRefreslh = new javax.swing.JButton();
         btVolver = new javax.swing.JButton();
         lbRegistro = new javax.swing.JLabel();
         lbDNI = new javax.swing.JLabel();
@@ -100,8 +98,6 @@ public class vistaAlumnos extends JDialog {
 
         btAlta.setForeground(new java.awt.Color(51, 153, 0));
         btAlta.setText("Alta");
-
-        btRefreslh.setText("Refresh");
 
         btVolver.setText("<< Volver");
 
@@ -172,9 +168,8 @@ public class vistaAlumnos extends JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(btBajas)
                         .addGap(234, 234, 234)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btClear)
-                            .addComponent(btRefreslh))))
+                        .addComponent(btClear)
+                        .addGap(6, 6, 6)))
                 .addGap(28, 28, 28))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
@@ -210,9 +205,7 @@ public class vistaAlumnos extends JDialog {
                     .addComponent(btBuscar)
                     .addComponent(btClear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btRefreslh)
-                    .addComponent(btVolver))
+                .addComponent(btVolver)
                 .addGap(5, 5, 5))
         );
 
@@ -230,7 +223,6 @@ public class vistaAlumnos extends JDialog {
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btClear;
     private javax.swing.JButton btModificar;
-    private javax.swing.JButton btRefreslh;
     private javax.swing.JButton btVolver;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

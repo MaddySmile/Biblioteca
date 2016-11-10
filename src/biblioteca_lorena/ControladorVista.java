@@ -39,10 +39,7 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         
-        if (e.getActionCommand() == "Refresh") {
-
-            iniciarConexion();
-        }
+       
 
         if (e.getActionCommand() == "Alta") {
           
@@ -53,6 +50,7 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
             ficha.setApellido2(v.getTxtApellido2().getText());
 
             neg.altaAlumno(ficha);
+             iniciarConexion();
         }
 
         if (e.getActionCommand() == "Bajas") {
@@ -61,11 +59,13 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
             ficha.setRegistro(v.getTxtRegistro().getText());
 
             neg.bajas(ficha);
+             iniciarConexion();
 
         }
         if (e.getActionCommand() == "Modificar") {
             setCamposComunes();
             neg.modificar(ficha);
+             iniciarConexion();
             
         }
         if (e.getActionCommand() == "Buscar") {
@@ -83,12 +83,15 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
         }
 
         if (e.getActionCommand() == "Limpiar") {
-
+             iniciarConexion();
+            
             v.getTxtRegistro().setText("");
             v.getTxtDNI().setText("");
             v.getTxtName().setText("");
             v.getTxtApellido1().setText("");
             v.getTxtApellido2().setText("");
+            
+        
 
         }
 

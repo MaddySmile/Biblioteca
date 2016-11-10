@@ -34,7 +34,6 @@ public class vistaLibros extends javax.swing.JDialog {
         btVolverLibros.addActionListener(x);
         tabLibros.addMouseListener(x);
         btBajas.addActionListener(x);
-        jButton5.addActionListener(x);
         btClear.addActionListener(x);
         btBuscar.addActionListener(x);
     }
@@ -68,7 +67,6 @@ public class vistaLibros extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         btClear = new javax.swing.JButton();
         btBuscar = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         btBajas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -132,8 +130,6 @@ public class vistaLibros extends javax.swing.JDialog {
         btBuscar.setBackground(new java.awt.Color(255, 204, 153));
         btBuscar.setText("Buscar");
 
-        jButton5.setText("Refresh");
-
         btBajas.setForeground(new java.awt.Color(255, 0, 0));
         btBajas.setText("Bajas");
 
@@ -163,37 +159,32 @@ public class vistaLibros extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbAutor)
                             .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btVolverLibros)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(292, 292, 292)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lbEditorial)
-                                                .addGap(102, 102, 102)
-                                                .addComponent(lbAsig))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton5))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btModificarLibros)
-                                .addGap(18, 18, 18)
-                                .addComponent(btAltaLibros)
-                                .addGap(18, 18, 18)
-                                .addComponent(btBajas)
-                                .addGap(201, 201, 201)
-                                .addComponent(btBuscar)
-                                .addGap(14, 14, 14)
-                                .addComponent(btClear)))
-                        .addGap(14, 14, 14)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btVolverLibros)
+                            .addGap(292, 292, 292)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbEditorial)
+                                    .addGap(102, 102, 102)
+                                    .addComponent(lbAsig))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(btModificarLibros)
+                            .addGap(18, 18, 18)
+                            .addComponent(btAltaLibros)
+                            .addGap(18, 18, 18)
+                            .addComponent(btBajas)
+                            .addGap(201, 201, 201)
+                            .addComponent(btBuscar)
+                            .addGap(14, 14, 14)
+                            .addComponent(btClear)
+                            .addGap(14, 14, 14))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -239,9 +230,7 @@ public class vistaLibros extends javax.swing.JDialog {
                                 .addComponent(btBajas)
                                 .addComponent(btAltaLibros)))
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btVolverLibros)
-                            .addComponent(jButton5))
+                        .addComponent(btVolverLibros)
                         .addContainerGap(22, Short.MAX_VALUE))))
         );
 
@@ -280,13 +269,6 @@ public class vistaLibros extends javax.swing.JDialog {
         this.btBajas = jButton4;
     }
 
-    public JButton getjButton5() {
-        return jButton5;
-    }
-
-    public void setjButton5(JButton jButton5) {
-        this.jButton5 = jButton5;
-    }
 
     public JPanel getjPanel1() {
         return jPanel1;
@@ -375,7 +357,6 @@ public class vistaLibros extends javax.swing.JDialog {
     private javax.swing.JButton btClear;
     private javax.swing.JButton btModificarLibros;
     private javax.swing.JButton btVolverLibros;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAsig;
