@@ -15,42 +15,50 @@ import libros.vistaLibros;
  *
  * @author MAÑANA - MLDF
  */
-public class controladorInicio implements ActionListener{
-    frameInicial frm ;
+public class controladorInicio implements ActionListener {
+
+    frameInicial frm;
+    vistaAlumnos alumno;
+    vistaLibros libros;
+    vistaInformesERROR informes;
+    vistaPrestamosERROR prestamos;
 
     public controladorInicio() {
         frm = new frameInicial(this);
         frm.setVisible(true);
-        
-       
+        frm.setLocationRelativeTo(null);
+
     }
-    
+
     @Override
-    public void actionPerformed(ActionEvent e) {                                          
-      if(e.getActionCommand() == "Alumnos")  {
-       new vistaAlumnos(frm).setVisible(true);
-      // new ControladorVista();
-         
-        
-           
-          //que se abra en plan Jdialog
-      }
-      if(e.getActionCommand() == "Libros")  {
-       new vistaLibros(frm).setVisible(true);
-      }
-      if(e.getActionCommand() == "Informes")  {
-       System.out.println("OOOPS!");
-            new vistaInformesERROR(frm, true).setVisible(true);
-      }
-      
-      if(e.getActionCommand() == "Prestamos")  {
-          System.out.println("OOPS!!!");
-          new vistaPrestamosERROR(frm, true).setVisible(true);
-      }
-      
-      if(e.getActionCommand() == "Salir")  {
-        frm.dispose();
-      
-      }
-    }  
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand() == "Alumnos") {
+            alumno = new vistaAlumnos(frm);
+            alumno.setLocationRelativeTo(frm);
+            alumno.setVisible(true);
+        }
+        if (e.getActionCommand() == "Libros") {
+            libros = new vistaLibros(frm);
+            libros.setLocationRelativeTo(frm);
+            libros.setVisible(true);
+        }
+        if (e.getActionCommand() == "Informes") {
+            System.out.println("OOOPS!");
+            informes = new vistaInformesERROR(frm, true);
+            informes.setLocationRelativeTo(frm);
+            informes.setVisible(true);
+        }
+
+        if (e.getActionCommand() == "Prestamos") {
+            System.out.println("OOPS!!!");
+            prestamos = new vistaPrestamosERROR(frm, true);
+            prestamos.setLocationRelativeTo(frm);
+            prestamos.setVisible(true);
+        }
+
+        if (e.getActionCommand() == "Salir") {
+            frm.dispose();
+
+        }
+    }
 }

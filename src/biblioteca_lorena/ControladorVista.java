@@ -32,6 +32,7 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
         ficha = new odtAlumno();
         v = d;
         iniciarConexion();
+    
 
     }
 

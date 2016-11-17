@@ -20,15 +20,18 @@ public class frameInicial extends javax.swing.JFrame {
      */
     public frameInicial(controladorInicio ctrInicio) {
         initComponents();
+        actionButtons(ctrInicio);
+ 
+     
+    }
+
+    public void actionButtons(controladorInicio ctrInicio){
         btAlumnos.addActionListener(ctrInicio);
         btLibros.addActionListener(ctrInicio);
         btSalir.addActionListener(ctrInicio);
         btInformes.addActionListener(ctrInicio);
         btPrestamos.addActionListener(ctrInicio);
-       
-     
-    }
-
+            }
    
 
     /**
@@ -126,26 +129,7 @@ public class frameInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
   
-    
-    /**
-     * @param args the command line arguments
-     */
-        public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                controladorInicio ctrInicio = new controladorInicio();
-               frameInicial dialog = new frameInicial(ctrInicio);
-               dialog.setVisible(true);
-                
-                       
-            }
-        });
-    }
+   
 
     public JButton getBtAlumnos() {
         return btAlumnos;
