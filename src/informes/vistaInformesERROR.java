@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inicio;
+package informes;
 
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -20,10 +20,9 @@ public class vistaInformesERROR extends javax.swing.JDialog {
     public vistaInformesERROR(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    
+
     }
-    
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,7 +43,6 @@ public class vistaInformesERROR extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

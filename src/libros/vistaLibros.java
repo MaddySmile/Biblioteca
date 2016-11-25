@@ -269,7 +269,6 @@ public class vistaLibros extends javax.swing.JDialog {
         this.btBajas = jButton4;
     }
 
-
     public JPanel getjPanel1() {
         return jPanel1;
     }

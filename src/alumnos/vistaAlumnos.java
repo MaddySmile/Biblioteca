@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package biblioteca_lorena;
+package alumnos;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,22 +19,20 @@ public class vistaAlumnos extends JDialog {
 
     /**
      * Creates new form vista
+     *
      * @param parent
      * @param modal
      */
     public vistaAlumnos(java.awt.Frame parent) {
         super(parent, true);
-         initComponents();   
-         eventosElementos();
-      
-        
-        
+        initComponents();
+        eventosElementos();
+
     }
 
-    public void eventosElementos(){
-        ControladorVista ctlVista = new ControladorVista(this);
-        
-       
+    public void eventosElementos() {
+        controladorAlumnos ctlVista = new controladorAlumnos(this);
+
         btBajas.addActionListener(ctlVista);
         btModificar.addActionListener(ctlVista);
         tabResultados.addMouseListener(ctlVista);
@@ -43,6 +41,7 @@ public class vistaAlumnos extends JDialog {
         btBuscar.addActionListener(ctlVista);
         btClear.addActionListener(ctlVista);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -215,7 +214,6 @@ public class vistaAlumnos extends JDialog {
     /**
      * @param args the command line arguments
      */
-  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlta;
@@ -238,7 +236,6 @@ public class vistaAlumnos extends JDialog {
     private javax.swing.JTextField txtRegistro;
     // End of variables declaration//GEN-END:variables
 
-
     public JButton getBtBajas() {
         return btBajas;
     }
@@ -254,7 +251,6 @@ public class vistaAlumnos extends JDialog {
     public void setBtModificar(JButton btModificar) {
         this.btModificar = btModificar;
     }
-
 
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;
@@ -311,9 +307,5 @@ public class vistaAlumnos extends JDialog {
     public void setTxtRegistro(JTextField txtRegistro) {
         this.txtRegistro = txtRegistro;
     }
-    
-    
 
-    
-    
 }

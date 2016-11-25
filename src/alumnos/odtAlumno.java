@@ -3,15 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package biblioteca_lorena;
+package alumnos;
 
 /**
  *
  * @author MAÑANA - MLDF
  */
 public class odtAlumno {
-   String nombre;
-   String apellido1;
+
+    String nombre;
+    String apellido1;
+    String apellido2;
+    String DNI;
+    String Registro;
+
 
     public String getApellido1() {
         return apellido1;
@@ -44,11 +49,7 @@ public class odtAlumno {
     public void setRegistro(String Registro) {
         this.Registro = Registro;
     }
-   String apellido2;
-   String DNI;
-   String Registro;
-   
-   
+  
     public odtAlumno() {
     }
 
@@ -59,6 +60,5 @@ public class odtAlumno {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
 }

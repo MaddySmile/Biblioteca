@@ -6,6 +6,7 @@
 package libros;
 
 import elementosComunes.Conexion;
+import interfaces.negocios;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author Lorena
  */
-public class negocioLibros {
+public class negocioLibros implements negocios {
 
     ResultSet rs;
     Conexion con;
@@ -25,7 +26,8 @@ public class negocioLibros {
 
     }
 
-    public ResultSet buscarLibros() {
+    @Override
+    public ResultSet buscarTodo() {
 
         String sql = "SELECT * FROM LIBROS";
 
@@ -33,7 +35,10 @@ public class negocioLibros {
 
     }
 
-    public ResultSet buscar(odtLibros v) {
+    @Override
+    public ResultSet buscar(Object o) {
+
+        odtLibros v = (odtLibros) o;
         String sql = "select * from libros where ";
         if (!(v.getAsignatura()).equals("")) {
             //System.out.println("asignatura");
@@ -44,24 +49,24 @@ public class negocioLibros {
             sql = sql + "autor like '%" + v.getAutor() + "%' and ";
         }
         if (!(v.getCodigo()).equals("")) {
-           // System.out.println("COD");
+            // System.out.println("COD");
             sql = sql + "codigo like '%" + v.getCodigo() + "%' and ";
         }
         if (!(v.getEditorial()).equals("")) {
-           // System.out.println("ed");
+            // System.out.println("ed");
             sql = sql + "editorial like '%" + v.getEditorial() + "%' and ";
         }
         if (!(v.getEstado()).equals("")) {
-          //  System.out.println("estado");
+            //  System.out.println("estado");
             sql = sql + "estado like '%" + v.getEstado() + "%' and ";
         }
         if (!(v.getTitulo()).equals("")) {
-          //  System.out.println("titulo");
+            //  System.out.println("titulo");
             sql = sql + "titulo like '%" + v.getTitulo() + "%' and ";
         }
 
         sql = sql.substring(0, sql.length() - 5);
-      //  System.out.println(sql.substring(0, sql.length() - 4));
+        //  System.out.println(sql.substring(0, sql.length() - 4));
         return con.executeQuery(sql);
 
     }
@@ -79,70 +84,29 @@ public class negocioLibros {
         return libro;
     }
 
-    public String getCodigo() throws SQLException {
-        rs = con.getRs();
-        return rs.getString("CODIGO");
-    }
-
-    public String getTitulo() throws SQLException {
-        rs = con.getRs();
-        return rs.getString("TITULO");
-    }
-
-    public String getAutor() throws SQLException {
-        rs = con.getRs();
-        return rs.getString("AUTOR");
-    }
-
-    public String getEditorial() throws SQLException {
-        rs = con.getRs();
-        return rs.getString("EDITORIAL");
-    }
-
-    public String getAsignatura() throws SQLException {
-        rs = con.getRs();
-        return rs.getString("ASIGNATURA");
-    }
-
-    public String getEstado() throws SQLException {
-        rs = con.getRs();
-        return rs.getString("ESTADO");
-    }
-
-    public void altaLibro(odtLibros ficha) {
-        //adsfasdfasdfasdf <3
-
+    @Override
+    public void alta(Object o) {
+        odtLibros ficha = (odtLibros) o;
         String consulta = "INSERT INTO libros (Titulo, Autor, Editorial, Asignatura, estado) VALUES ('" + ficha.getTitulo() + "', '" + ficha.getAutor() + "', '" + ficha.getEditorial() + "', '" + ficha.getAsignatura() + "', '" + ficha.getEstado() + "')";
-
-        if (con.consultaUpdate(consulta) > 0) {
-            JOptionPane.showMessageDialog(null, "Alta Correcta");
-        } else {
-            JOptionPane.showMessageDialog(null, "Ha Habido un Error en su alta ");
-
-        }
+        con.consultaUpdate(consulta);
+        
 
     }
 
-    public void bajasLibros(odtLibros ficha) {//Is OK
+    @Override
+    public void bajas(Object o) {
+        odtLibros ficha = (odtLibros) o;
+
         String sql = "delete from libros where codigo=" + ficha.getCodigo();
-
-        if (con.consultaUpdate(sql) > 0) {
-            JOptionPane.showMessageDialog(null, "Baja Correcta");
-        } else {
-            JOptionPane.showMessageDialog(null, "Ha Habido un Error");
-        }
-
+        con.consultaUpdate(sql);        
     }
 
-    public void modificar(odtLibros s) {
-        String sql = "UPDATE LIBROS SET Titulo='" + s.getTitulo() + "', Autor='" + s.getAutor() + "', Editorial='" + s.getEditorial() + "', Asignatura='" + s.getAsignatura() + "', Estado='" + s.getEstado() + "' where codigo=" + s.getCodigo();
-
-        if (con.consultaUpdate(sql) > 0) {
-            JOptionPane.showMessageDialog(null, "Modificación Correcta");
-        } else {
-            JOptionPane.showMessageDialog(null, "Ha Habido un Error");
-        }
-
+    @Override
+    public void modificar(Object o) {
+        odtLibros ficha = (odtLibros) o;
+        String sql = "UPDATE LIBROS SET Titulo='" + ficha.getTitulo() + "', Autor='" + ficha.getAutor() + "', Editorial='" + ficha.getEditorial() + "', Asignatura='" + ficha.getAsignatura() + "', Estado='" + ficha.getEstado() + "' where codigo=" + ficha.getCodigo();
+        con.consultaUpdate(sql);
+       
     }
 
 }

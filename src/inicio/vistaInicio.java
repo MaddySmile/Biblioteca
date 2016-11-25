@@ -13,26 +13,24 @@ import javax.swing.JButton;
  *
  * @author MAÑANA - MLDF
  */
-public class frameInicial extends javax.swing.JFrame {
+public class vistaInicio extends javax.swing.JFrame {
 
     /**
      * Creates new form frameInicial
      */
-    public frameInicial(controladorInicio ctrInicio) {
+    public vistaInicio(controladorInicio ctrInicio) {
         initComponents();
         actionButtons(ctrInicio);
- 
-     
+
     }
 
-    public void actionButtons(controladorInicio ctrInicio){
+    public void actionButtons(controladorInicio ctrInicio) {
         btAlumnos.addActionListener(ctrInicio);
         btLibros.addActionListener(ctrInicio);
         btSalir.addActionListener(ctrInicio);
         btInformes.addActionListener(ctrInicio);
         btPrestamos.addActionListener(ctrInicio);
-            }
-   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -128,9 +126,6 @@ public class frameInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-  
-   
-
     public JButton getBtAlumnos() {
         return btAlumnos;
     }
@@ -160,10 +155,9 @@ public class frameInicial extends javax.swing.JFrame {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("imagenes/pink.png"));
 
-
         return retValue;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlumnos;
     private javax.swing.JButton btInformes;
@@ -173,5 +167,4 @@ public class frameInicial extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-   
 }

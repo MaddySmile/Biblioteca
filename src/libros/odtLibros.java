@@ -10,6 +10,7 @@ package libros;
  * @author Lorena
  */
 public class odtLibros {
+
     String codigo;
     String titulo;
     String autor;
@@ -67,6 +68,5 @@ public class odtLibros {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
+
 }

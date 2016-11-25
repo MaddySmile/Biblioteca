@@ -5,8 +5,9 @@
  */
 package inicio;
 
+import informes.vistaInformesERROR;
 import Prestamos.vistaPrestamosERROR;
-import biblioteca_lorena.vistaAlumnos;
+import alumnos.vistaAlumnos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import libros.vistaLibros;
@@ -17,14 +18,14 @@ import libros.vistaLibros;
  */
 public class controladorInicio implements ActionListener {
 
-    frameInicial frm;
+    vistaInicio frm;
     vistaAlumnos alumno;
     vistaLibros libros;
     vistaInformesERROR informes;
     vistaPrestamosERROR prestamos;
 
     public controladorInicio() {
-        frm = new frameInicial(this);
+        frm = new vistaInicio(this);
         frm.setVisible(true);
         frm.setLocationRelativeTo(null);
 

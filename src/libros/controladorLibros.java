@@ -43,19 +43,19 @@ public class controladorLibros extends MouseAdapter implements ActionListener {
             libro.setAsignatura(v.getTxtAsignatura().getText());
             libro.setEstado(v.getTxtEstado().getText());
 
-            neg.altaLibro(libro);
+            neg.alta(libro);
 
             iniciarConexion();
         }
-        
+
         if (e.getActionCommand() == "Bajas") {
             libro.setCodigo(v.getTxtCodigo().getText());
 
-            neg.bajasLibros(libro);
+            neg.bajas(libro);
 
             iniciarConexion();
         }
-        
+
         if (e.getActionCommand() == "Modificar") {
 
             setCamposComunes();
@@ -72,7 +72,7 @@ public class controladorLibros extends MouseAdapter implements ActionListener {
                 rs.next();
                 vtabla = new VistaTabla(rs);
                 v.getTabLibros().setModel(vtabla);
-                
+
             } catch (SQLException ex) {
                 Logger.getLogger(controladorLibros.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -104,7 +104,7 @@ public class controladorLibros extends MouseAdapter implements ActionListener {
 
     public void iniciarConexion() {
         try {
-            rs = neg.buscarLibros();
+            rs = neg.buscarTodo();
             rs.next();
             odtLibros libro = new odtLibros();
             libro = neg.getLibros();

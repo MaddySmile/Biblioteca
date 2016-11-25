@@ -22,24 +22,25 @@ public class Conexion {
     private Connection con;
     private Statement st;
     private ResultSet rs;
-    private static Conexion conexion; 
+    private static Conexion conexion;
+
     private Conexion() {
         conectar();
     }
-    
-    public static Conexion getSingletonInstance(){
-        if(conexion == null){
+
+    public static Conexion getSingletonInstance() {
+        if (conexion == null) {
             conexion = new Conexion();
-        }else{
+        } else {
             System.out.println("No se puede conectar porque ya está creada una conexión");
         }
-        
+
         return conexion;
     }
 
     public void conectar() {
         try {
-           con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca", "root", "");
             // st = con.createStatement();
 
         } catch (SQLException ex) {
@@ -47,17 +48,16 @@ public class Conexion {
         }
 
     }
-    
- public void cerrarConexion(){
-	  
+
+    public void cerrarConexion() {
+
         try {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
-		
-    
+    }
+
     public Connection getCon() {
         return con;
     }
@@ -83,7 +83,6 @@ public class Conexion {
     }
 
     public ResultSet executeQuery(String sql) {
-        //ESPARALOS INSERT
         Statement stmt;
         try {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -91,11 +90,11 @@ public class Conexion {
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-            return rs;
+
+        return rs;
     }
 
-    public int consultaUpdate(String cons){
+    public int consultaUpdate(String cons) {
         try {
             Statement stmt;
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -104,7 +103,7 @@ public class Conexion {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return -1;
-        
+
     }
-    
+
 }

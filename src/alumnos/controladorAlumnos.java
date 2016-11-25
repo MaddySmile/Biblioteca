@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package biblioteca_lorena;
+package alumnos;
 
 import elementosComunes.VistaTabla;
 import java.awt.event.ActionEvent;
@@ -18,56 +18,50 @@ import java.util.logging.Logger;
  *
  * @author MAÑANA - MLDF
  */
-public class ControladorVista extends MouseAdapter implements ActionListener {
+public class controladorAlumnos extends MouseAdapter implements ActionListener {
 
-    negocio neg;
+    negocioAlumnos neg;
     ResultSet rs;
     vistaAlumnos v;
     private VistaTabla vtabla = null;
     odtAlumno ficha;
 
-    public ControladorVista(vistaAlumnos d) {
+    public controladorAlumnos(vistaAlumnos d) {
 
-        neg = new negocio();
+        neg = new negocioAlumnos();
         ficha = new odtAlumno();
         v = d;
         iniciarConexion();
-    
 
     }
 
     @Override
-
     public void actionPerformed(ActionEvent e) {
-        
-       
 
         if (e.getActionCommand() == "Alta") {
-          
 
             ficha.setDNI(v.getTxtDNI().getText());
             ficha.setNombre(v.getTxtName().getText());
             ficha.setApellido1(v.getTxtApellido1().getText());
             ficha.setApellido2(v.getTxtApellido2().getText());
 
-            neg.altaAlumno(ficha);
-             iniciarConexion();
+            neg.alta(ficha);
+            iniciarConexion();
         }
 
         if (e.getActionCommand() == "Bajas") {
-          
 
             ficha.setRegistro(v.getTxtRegistro().getText());
 
             neg.bajas(ficha);
-             iniciarConexion();
+            iniciarConexion();
 
         }
         if (e.getActionCommand() == "Modificar") {
             setCamposComunes();
             neg.modificar(ficha);
-             iniciarConexion();
-            
+            iniciarConexion();
+
         }
         if (e.getActionCommand() == "Buscar") {
             try {
@@ -78,21 +72,19 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
                 v.getTabResultados().setModel(vtabla);
 
             } catch (SQLException ex) {
-                Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(controladorAlumnos.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
 
         if (e.getActionCommand() == "Limpiar") {
-             iniciarConexion();
-            
+            iniciarConexion();
+
             v.getTxtRegistro().setText("");
             v.getTxtDNI().setText("");
             v.getTxtName().setText("");
             v.getTxtApellido1().setText("");
             v.getTxtApellido2().setText("");
-            
-        
 
         }
 
@@ -109,7 +101,7 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
     }
 
     public void setCamposComunes() {
-       
+
         ficha.setDNI(v.getTxtDNI().getText());
         ficha.setNombre(v.getTxtName().getText());
         ficha.setApellido1(v.getTxtApellido1().getText());
@@ -119,9 +111,9 @@ public class ControladorVista extends MouseAdapter implements ActionListener {
 
     public void iniciarConexion() {
         try {
-            rs = neg.buscarAlumnos();
+            rs = neg.buscarTodo();
             rs.next();
-       
+
             ficha = neg.getAlumno();
             v.getTxtName().setText(ficha.getNombre());
             v.getTxtApellido1().setText(ficha.getApellido1());
